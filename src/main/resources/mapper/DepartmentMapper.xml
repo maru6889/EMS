@@ -1,0 +1,9 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.ems.repository.DepartmentRepository">
+    <select id="findDepartment" resultType="Department">
+        select *
+        from dept_emp
+    </select>
+</mapper>

@@ -1,0 +1,17 @@
+package com.example.ems.domain;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.LocalDate;
+
+@Getter
+@Setter
+public class DeptEmp {
+    private int empNo;
+    private int deptNo;
+    private LocalDate fromDate;
+    private LocalDate toDate;
+    private Employee employee;
+    private Department department;
+}
