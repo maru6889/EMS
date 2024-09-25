@@ -1,10 +1,12 @@
 package com.example.ems.repository;
 
 import com.example.ems.domain.Salary;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.sql.Date;
 import java.util.List;
 
+@Mapper
 public interface SalaryRepository {
     //create
     void insertSalary(Salary salary);

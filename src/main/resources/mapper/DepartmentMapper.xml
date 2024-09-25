@@ -2,8 +2,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.ems.repository.DepartmentRepository">
-    <select id="findDepartment" resultType="Department">
-        select *
-        from dept_emp
-    </select>
+    <resultMap id="DepartmentResultMap" type="com.example.ems.domain.Department">
+        <id property="deptNo" column="dept_no"/>
+        <result property="deptName" column="dept_name"/>
+        <collection property="deptEmps" ofType="com.example.ems.domain.DeptEmp">
+            <id property="empNo" column="emp_no"/>
+            <id property="deptNo" column="dept_no"/>
+            <result property="fromDate" column="from_date"/>
+            <result property="toDate" column="to_date"/>
+            <!-- DepartmentMapper.xml에서는 부서 중심의 조회이기 때문에, 해당 부서에 속한 직원들을 확인하는 것이 자연스럽습니다. -->
+            <association property="employee" javaType="com.example.ems.domain.Employee">
+                <id property="empNo" column="emp_no"/>
+                <result property="firstName" column="first_name"/>
+                <result property="lastName" column="last_name"/>
+            </association>
+        </collection>
+    </resultMap>
 </mapper>
