@@ -8,7 +8,7 @@ import java.util.List;
 @Getter
 @Setter
 public class Department {
-    private int deptNo;
+    private String deptNo;
     private String deptName;
     private List<DeptEmp> deptEmps;
 }

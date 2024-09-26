@@ -1,5 +1,6 @@
 package com.example.ems.controller;
 
+import com.example.ems.domain.DeptEmp;
 import com.example.ems.repository.DeptEmpRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,8 @@ public class DeptEmpController {
     @GetMapping("/{id}")
     public ResponseEntity<?> findDeptEmpByEmpNo(@PathVariable("id") int empNo) {
         log.info("findDeptEmpByEmpNo 호출");
-        return new ResponseEntity<>(deptEmpRepository.selectDeptEmpByEmpNo(empNo), HttpStatus.OK);
+        DeptEmp deptEmp = deptEmpRepository.selectDeptEmpByEmpNo(empNo);
+        log.info("deptEmps: {}", deptEmp);
+        return new ResponseEntity<>(deptEmp, HttpStatus.OK);
     }
 }

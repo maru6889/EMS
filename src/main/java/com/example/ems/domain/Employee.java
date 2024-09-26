@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 public class Employee {
     private int empNo;
-    private LocalDate date;
+    private LocalDate birthDate;
     private String firstName;
     private String lastName;
     private GenderType gender;

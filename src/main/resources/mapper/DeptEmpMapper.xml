@@ -9,6 +9,7 @@
         <result property="toDate" column="to_date"/>
         <association property="employee" javaType="com.example.ems.domain.Employee">
             <id property="empNo" column="emp_no"/>
+            <result property="birthDate" column="birth_date"/>
             <result property="firstName" column="first_name"/>
             <result property="lastName" column="last_name"/>
             <result property="gender" column="gender"/>
@@ -20,8 +21,21 @@
         </association>
     </resultMap>
 
+    <!-- 3개의 테이블 조인 후 모든 데이터 조회 -->
     <select id="selectDeptEmpByEmpNo" resultMap="DeptEmpResultMap" parameterType="int">
-        select * from dept_emp
-        where emp_no = #{empNo}
+        select de.emp_no,
+               de.dept_no,
+               de.from_date,
+               de.to_date,
+               e.birth_date,
+               e.first_name,
+               e.last_name,
+               e.gender,
+               e.hire_date,
+               d.dept_name
+        from dept_emp de
+                 join employees e on de.emp_no = e.emp_no
+                 join departments d on de.dept_no = d.dept_no
+        where de.emp_no = #{empNo};
     </select>
 </mapper>

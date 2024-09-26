@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Setter
 public class DeptEmp {
     private int empNo;
-    private int deptNo;
+    private String deptNo;
     private LocalDate fromDate;
     private LocalDate toDate;
     private Employee employee;
